@@ -120,7 +120,7 @@ PieChart.prototype.setSegmentPullOutDuration = (duration) => {
 	this.config.pullOutSegment.duration = duration;	
 };
 
-PieChart.prototype.setSegmentPullOutDuration = (length) => {
+PieChart.prototype.setSegmentPullOutLength = (length) => {
 
 	this.config.pullOutSegment.pullOutLength = length;	
 };
