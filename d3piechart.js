@@ -128,9 +128,18 @@ PieChart.prototype.setSegmentPullOutLength = (length) => {
 
 PieChart.prototype.createPieChart = () => {
 	
-	$("svg").remove();
+	d3.select("svg").remove();
+	d3.select(".tooltip-css").remove();
 
-	console.log(d3.version)
+	const tooltip = d3.select("body")
+		.append("div")
+		.attr("class","tooltip-css")
+
+	tooltip.append("div")
+		.attr("class","data1");
+
+	tooltip.append("div")
+		.attr("class","data2");		
 
 	const element  = this.config.element,
 		width = $(window).width(),
