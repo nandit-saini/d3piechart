@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'd3piechart',
+  name: 'nandit:d3piechart',
   version: '0.0.1',
   // Brief, one-line summary of the package.
   summary: 'Makes a configurable d3 pie chart',
@@ -13,13 +13,13 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('1.4.2.3');
   api.use('ecmascript');
-  api.mainModule('d3piechart.js');
+  api.mainModule('nandit:d3piechart.js');
 });
 
 Package.onTest(function(api) {
   api.use('ecmascript');
   api.use('tinytest');
-  api.use('d3piechart');
+  api.use('nandit:d3piechart');
   api.mainModule('d3piechart-tests.js');
 });
 
