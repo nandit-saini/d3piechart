@@ -15,7 +15,7 @@ export const PieChart = () => {
 		innerRadius:0,		
 		animationDuration:1000,
 		startColor: "#007AFF",
-		endColor : '#FFF500',
+		endColor : "#FFF500",
 		title : {
 			text:"This is a dummy title",
 			fontSize: 24,
@@ -90,7 +90,7 @@ PieChart.prototype.setTitleSize = (fontSize) => {
 	this.config.title.fontSize = fontSize;	
 };
 
-PieChart.prototype.setTitleFontSize = (fontFamily) => {
+PieChart.prototype.setTitleFontFamily = (fontFamily) => {
 	
 	this.config.title.fontFamily = fontFamily;	
 };
@@ -100,17 +100,17 @@ PieChart.prototype.setTitleFontWeight = (fontWeight) => {
 	this.config.title.fontWeight = fontWeight;	
 };
 
-PieChart.prototype.setArcLabelFontFamily = (fontFamily) => {
+PieChart.prototype.setSegmentLabelFontFamily = (fontFamily) => {
 
 	this.config.arcLabel.fontFamily = fontFamily;	
 };
 
-PieChart.prototype.setArcLabelFontSize = (fontSize) => {
+PieChart.prototype.setSegmentLabelFontSize = (fontSize) => {
 
 	this.config.arcLabel.fontSize = fontSize;	
 };
 
-PieChart.prototype.setArcLabelFontColor = (fontColor) => {
+PieChart.prototype.setSegmentLabelFontColor = (fontColor) => {
 
 	this.config.arcLabel.fontColor = fontColor;	
 };
@@ -245,7 +245,7 @@ PieChart.prototype.createPieChart = () => {
 	.style("font-family",title.fontFamily)
 	.style("font-size",title.fontSize)
 	.style("font-weight",title.fontWeight)
-	.style("text-anchor","middle");
+	.style("text-anchor",title.alignment);
 
 
 	g.on("click",function(){

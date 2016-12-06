@@ -2,9 +2,9 @@ Package.describe({
   name: 'd3piechart',
   version: '0.0.1',
   // Brief, one-line summary of the package.
-  summary: '',
+  summary: 'Makes a configurable d3 pie chart',
   // URL to the Git repository containing the source code for this package.
-  git: '',
+  git: 'https://github.com/nandit-saini/d3piechart',
   // By default, Meteor will default to using README.md for documentation.
   // To avoid submitting documentation, set this field to null.
   documentation: 'README.md'
