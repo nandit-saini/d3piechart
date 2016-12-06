@@ -134,6 +134,15 @@ PieChart.prototype.createPieChart = () => {
 	const tooltip = d3.select("body")
 		.append("div")
 		.attr("class","tooltip-css")
+		.style("position", "absolute")
+    	.style("padding", "10px")
+    	.style("background-color", "white")
+    	.style("-webkit-border-radius", "10px")
+    	.style("-moz-border-radius", "10px")
+    	.style("border-radius", "10px")
+    	.style("-webkit-box-shadow", "4px 4px 10px rgba(0, 0, 0, 0.4)")
+    	.style("-mox-box-shadow", "4px 4px 4px 10px rgba(0, 0, 0, 0.4)")
+    	.style("box-shadow","4px 4px 10px rbga(0, 0, 0, 0.4) pointer-events: none")
 
 	tooltip.append("div")
 		.attr("class","data1");
