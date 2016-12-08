@@ -1,6 +1,6 @@
 Package.describe({
   name: 'nandit:d3piechart',
-  version: '0.0.1',
+  version: '0.0.6',
   // Brief, one-line summary of the package.
   summary: 'Makes a configurable d3 pie chart',
   // URL to the Git repository containing the source code for this package.
@@ -24,5 +24,5 @@ Package.onTest(function(api) {
 });
 
 Npm.depends({
-  d3: '3.5.17'
+  d3: '4.4.0'
 });
