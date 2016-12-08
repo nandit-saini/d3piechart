@@ -129,18 +129,18 @@ Now, create a new object and then use the object's methods to create a D3 Pie Ch
     >	// d : Pie Chart segment object  
     	// i : index of the object from the json data
     >
-    >	_**return d.data.color;**_
+    >	_return d.data.color;_
     >
     > /* if the all the json objects passed in the data have a color field then it	will return that color. Example:- json_data = [{"result_type":"organic","qty":45,"color":"green"},	 {"result_type":"ads","qty":30,"color":"red"}] then it will return green and red for the respective  segment*/
 	>
 	>----------------------------------OR---------------------------------------  
 	>	You can also make your own logic like as follows:
     >
-	>	_**const qty = d.data.qty;**_  
-	>	_**if(qty == 10 )**_  
-	>		_**return "red";**_  
-	>	_**else if(qty==20)**_  
-	>		_**return "#000000";**_  
-	>	_**else**_  
-	>		_**return "rgb(0,123,23)";**_  
+	>	_const qty = d.data.qty;_  
+	>	_if(qty == 10 )_  
+	>		_return "red";_  
+	>	_else if(qty==20)_  
+	>		_return "#000000";_  
+	>	_else_  
+	>		_return "rgb(0,123,23)";_  
     >_});_ 
