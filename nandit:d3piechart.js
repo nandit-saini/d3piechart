@@ -176,7 +176,7 @@ PieChart.prototype.createPieChart = () => {
 
 	const selector = element[0] === '#' ? d3.select(element) : d3.selectAll(element);  
 
-	const color =  d3.scaleLinear()/*.scale.linear().domain([1,length])*/
+	const color =  d3.scaleLinear()/*.scale.linear()*/.domain([1,length])
       .interpolate(d3.interpolateHcl)
       .range([d3.rgb(startColor), d3.rgb(endColor)]);
 
