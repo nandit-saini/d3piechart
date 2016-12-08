@@ -1,9 +1,3 @@
-// Write your package code here!
-
-// Variables exported by this module can be imported by other packages and
-// applications. See d3piechart-tests.js for an example of importing.
-// export const name = 'd3piechart';
-
 import * as d3 from 'd3';
 export const PieChart = () => {
 
@@ -33,7 +27,8 @@ export const PieChart = () => {
 		pullOutSegment : {
 			duration:300,
 			pullOutLength:20
-		}
+		},
+		customColorFunction:""
 	};	    
 
     this.data = {};
@@ -125,6 +120,10 @@ PieChart.prototype.setSegmentPullOutLength = (length) => {
 	this.config.pullOutSegment.pullOutLength = length;	
 };
 
+PieChart.prototype.setCustomColorFunction = (fn) => {
+
+	this.config.customColorFunction = fn;
+};
 
 PieChart.prototype.createPieChart = () => {
 	
@@ -145,10 +144,14 @@ PieChart.prototype.createPieChart = () => {
     	.style("box-shadow","4px 4px 10px rbga(0, 0, 0, 0.4) pointer-events: none")
 
 	tooltip.append("div")
-		.attr("class","data1");
+		.attr("class","data1")
+		.style("font-size","14px")
+		.style("font-family","Helvetica Neue, Helvetica, Arial, sans-serif");
 
 	tooltip.append("div")
-		.attr("class","data2");		
+		.attr("class","data2")
+		.style("font-size","14px")
+		.style("font-family","Helvetica Neue, Helvetica, Arial, sans-serif");		
 
 	const element  = this.config.element,
 		width = $(window).width(),
@@ -168,23 +171,24 @@ PieChart.prototype.createPieChart = () => {
 	    labelOuterRadius = (3*radius)/4,
 	    length = data.length;
 	    startColor = this.config.startColor,
-	    endColor = this.config.endColor;
+	    endColor = this.config.endColor,
+	    customColorFunction = this.config.customColorFunction;
 
 	const selector = element[0] === '#' ? d3.select(element) : d3.selectAll(element);  
 
-	const color =  d3/*.scaleLinear()*/.scale.linear().domain([1,length])
+	const color =  d3.scaleLinear()/*.scale.linear().domain([1,length])*/
       .interpolate(d3.interpolateHcl)
       .range([d3.rgb(startColor), d3.rgb(endColor)]);
 
-	const arc = d3/*.arc()*/.svg.arc()
+	const arc = d3.arc()/*.svg.arc()*/
 	    .outerRadius(outerRadius)
 	    .innerRadius(innerRadius);
 
-	const labelArc = d3/*.arc()*/.svg.arc()
+	const labelArc = d3.arc()/*.svg.arc()*/
 	    .outerRadius(labelOuterRadius)
 	    .innerRadius(labelInnerRadius);
 
-	const pie = d3/*.pie()*/.layout.pie()
+	const pie = d3.pie()/*.layout.pie()*/
 	    .sort(null)
 	    .value(function(d) { return d[Object.keys(d)[1]]; });
 
@@ -199,12 +203,27 @@ PieChart.prototype.createPieChart = () => {
 		  .enter().append("g")
 		  .attr("class", "arc");
 
+	
+	if(customColorFunction!=="")	  
+	{	
 		g.append("path")
 		  .attr("d", arc)
-		  .style("fill", function(d,i) { return color(i); })
+		  .style("fill", customColorFunction)
+		  .style("cursor","pointer")
 		  .transition()
 		  .duration(animationDuration)
 		  .attrTween('d', tweenPie);		 
+	}
+	else 
+	{
+		g.append("path")
+		  .attr("d", arc)
+		  .style("fill", function(d,i) { return color(i); })
+		  .style("cursor","pointer")
+		  .transition()
+		  .duration(animationDuration)
+		  .attrTween('d', tweenPie);		 
+	}
 
 		g.append("text")
 		  .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
@@ -217,6 +236,7 @@ PieChart.prototype.createPieChart = () => {
 		  .style("font-size",arcLabel.fontSize+"px")
 		  .style("fill",arcLabel.fontColor)
 		  .style("text-anchor",arcLabel.alignment)
+		  .style("cursor","pointer")
 
 
 		g.selectAll("text").text(function(d){ // adjusting size of the labels whose segments is smaller than the text
@@ -271,9 +291,7 @@ PieChart.prototype.createPieChart = () => {
 		openSegment(obj,pullOutSegment.duration,pullOutSegment.pullOutLength);
 		obj.style("opacity","0.7");
 		
-		console.log(d3.mouse(this));
-	
-  		$(".tooltip-css").css("opacity","1");
+		$(".tooltip-css").css("opacity","1");
   		$(".data1").html(Object.keys(d.data)[0]+" -"+d.data[Object.keys(d.data)[0]]);
   		$(".data2").html(Object.keys(d.data)[1]+" -"+d.data[Object.keys(d.data)[1]]);
   		
@@ -306,10 +324,10 @@ PieChart.prototype.createPieChart = () => {
 
 				return "translate(" + ((x/h) * pullOutSize) + ',' + ((y/h) * pullOutSize) + ")";
 			})
-			// .on("end", function(d, i) {
+			.on("end", function(d, i) {
 				
 				segment.attr("class", "expanded");
-			// });
+			});
 	}
 
 	function closeSegment (segment,duration) {
@@ -317,11 +335,11 @@ PieChart.prototype.createPieChart = () => {
 		segment.transition()
 			.duration(duration)
 			.attr("transform", "translate(0,0)")
-			// .on("end", function(d, i) {
+			.on("end", function(d, i) {
 				
 				segment.attr("class", "");
 				
-			// });
+			});
 	}
 
 	function tweenPie(finish) {
