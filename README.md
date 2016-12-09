@@ -145,4 +145,52 @@ Now, create a new object and then use the object's methods to create a D3 Pie Ch
 	>		_return "rgb(0,123,23)";_  
     >_});_
 
-17.      
+17. setTooltipPadding(padding)
+
+	This method is used to set the tooltip's padding.
+
+	>_objPieChart.setTooltipPadding(10);_ //Setting the padding of tooltip 
+
+18. setTooltipBackgroundColor(backgroundColor)
+
+	This method is used to set the tooltip's background color.
+
+	>_objPieChart.setTooltipBackgroundColor("#000000");_ //Setting the background color of tooltip
+
+19. setTooltipBorderRadius(borderRadius)
+
+	This method is used to set the tooltip's border radius.
+
+	>_objPieChart.setTooltipBorderRadius(10);_ //Setting the border radius of tooltip
+
+20. setTooltipBoxShadow(borderShadow)
+
+	This method is used to set the tooltip's box shadow.
+
+	>_objPieChart.setTooltipBoxShadow("4px 4px 10px rgba(0,0,0,0.4)");_ //Setting the border shadow of tooltip
+
+21. setTooltipLabelFontSize(fontSize)
+
+	This method is used to set the font size of tooltip's label text.
+
+	>_objPieChart.setTooltipLabelFontSize("14px");_	//Setting the font size of tooltip's label text
+
+22. setTooltipLabelFontFamily(fontFamily)
+	
+	This method is used to set the font family of tooltip's label text.
+
+	>_objPieChart.setTooltipLabelFontFamily("Helvatica");_ //Setting the font family of tooltip's label text
+
+23. setTooltipLabelFontWeight(fontWeight)
+
+	This method is used to set the font weight of tooltip's label text.
+
+	>_objPieChart.setTooltipLabelFontWeight("normal");_ //Setting the font weight
+	>_objPieChart.setTooltipLabelFontWeight("300");_ //Setting the font weight
+
+24. setTooltipLabelFontColor(fontColor)
+
+	This method is used to set the font color of tooltip's label text.
+
+	>_objPieChart.setTooltipLabelFontColor("#5CB85C");_ //Setting the font color by using hex code
+	>_objPieChart.setTooltipLabelFontColor("blue");_ //Setting the font color by using names	
