@@ -192,5 +192,5 @@ Now, create a new object and then use the object's methods to create a D3 Pie Ch
 
 	This method is used to set the font color of tooltip's label text.
 
-	>_objPieChart.setTooltipLabelFontColor("#5CB85C");_ //Setting the font color by using hex code
+	>_objPieChart.setTooltipLabelFontColor("#5CB85C");_ //Setting the font color by using hex code  
 	>_objPieChart.setTooltipLabelFontColor("blue");_ //Setting the font color by using names	
